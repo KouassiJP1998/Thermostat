@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Programmable thermostat</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css" />
+        <script src="index.js"></script>
+    </head>
+    <body>
+
+	<table id="thermostat">
+		<tr>
+			<td colspan = "3" class="tab_center">
+ 				<button type="button" id="run_program" onclick="reprendre_programme()">Run program</button>
+			</td>
+		</tr>
+		<tr>
+			<td class="tab_left">
+ 				<button type="button" id="switch_f_c" onClick="switch_unit()">F - C</button>
+			</td>
+			<td class="tab_center">
+				<div id="aff_cursor" class="aff">
+					<label id="aff_val_cursor">21.0</label>
+					<label id="aff_unit_cursor">°C</label>
+				</div>
+			</td>
+			<td  class="tab_right">
+ 				<button type="button" id="hold_temp" onClick="hold_temp_action('edit')">Hold Temp</button>
+			</td>
+		</tr>
+		<tr>
+  			<td colspan = "3" class="tab_center" style="height: 75px;">
+				<input type="range" min="14" max="28" value="21" step="0.5" id="slider_temp" oninput="changeTemp_cursor()">
+			</td>
+		</tr>
+		<tr>
+			<td class="tab_left">
+				<table>
+					<tr>
+						<td class="case_a_cocher" style="border: 2px solid blue;">
+							<input id="cool" type="checkbox" onclick="change_action('cool')">cool
+						</td>
+						<td>
+							<button type="button" id="set_clock" onclick="etat_change('clock')">Set Clock</button>
+						</td>
+					</tr>
+					<tr>
+						<td class="case_a_cocher" style="border: 2px solid red;">
+ 							<input id="heat" type="checkbox" onclick="change_action('heat')">heat
+						</td>
+						<td>
+							<button type="button" id="set_day" onclick="etat_change('day')">Set Day</button>
+						</td>
+					</tr>
+					<tr>
+						<td class="case_a_cocher" style="border: 2px solid grey; background-color: #dbdbdb;">
+ 							<input id="off" type="checkbox" onclick="change_action('off')">off
+						</td>
+						<td>
+							<button type="button" id="view_program" onclick="run_program('next')">View Program</button>
+						</td>
+					</tr>
+				</table>
+			</td>
+			<td class="tab_center">
+				<div id="aff_temp" class="aff">
+					<label id="aff_val_temp">21.0</label>
+					<label id="aff_unit_temp">°C</label>
+				</div>
+			</td>
+			<td>
+				<table style="float: right;">
+					<tr>
+						<td>
+ 							<button type="button" id="time_backward" onclick="change_date(-1)">Time backward</button>
+						</td>
+						<td class="case_a_cocher" style="border: 2px solid #00FF00; background-color: #cdffcc;" id="case_auto">
+							<input id="auto" type="checkbox" onclick="change_usage('auto')">auto
+						</td>
+					</tr>
+					<tr>
+						<td>
+ 							<button type="button" id="time_forward" onclick="change_date(+1)">Time forward</button>
+						</td>
+						<td class="case_a_cocher" style="border: 2px solid #00FF00;" id="case_on">
+							<input id="on" type="checkbox" onclick="change_usage('on')">on
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+    </body>
+</html>
